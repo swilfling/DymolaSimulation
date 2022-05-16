@@ -1,5 +1,8 @@
 within DymolaExamples.Examples_Filters;
 model Test_Model_Filters_ModelSwitching_Terminate
+  parameter Real fmi_NumberOfSteps = 1000;
+  parameter Real fmi_StartTime=0;
+  parameter Real fmi_StopTime=10;
   parameter Real y_start=0;
   Modelica.Blocks.Sources.Step InputSignal(
     startTime=0.1,
@@ -8,7 +11,8 @@ model Test_Model_Filters_ModelSwitching_Terminate
   Modelica.Blocks.Math.Feedback error_calc;
   TestbenchComponents.Threshold_Terminator threshold_Terminator(threshold=
        0.1);
-      Chebyshev_fmu UUT(y_start=y_start);
+      Chebyshev_fmu UUT(y_start=y_start, fmi_NumberOfSteps=fmi_NumberOfSteps,
+    fmi_StartTime=fmi_StartTime, fmi_StopTime=fmi_StopTime);
 equation
 
   connect(InputSignal.y, UUT.u1);

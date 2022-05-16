@@ -51,6 +51,7 @@ if __name__ == "__main__":
                                            model_name=f"{model_type}_fmu",
                                            parameters={"y_start": "y_start"},
                                            is_fmu=True,
+                                           use_fmi_init_params=True,
                                            is_exchange_model=True) for model_type in fmu_names]
     # Add terminator
     dymola_models.append(DymolaModelParameters(model_name="TestbenchComponents.ThresholdTerminator",

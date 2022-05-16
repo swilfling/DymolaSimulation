@@ -51,11 +51,13 @@ if __name__ == "__main__":
                                          parameters={"y_start":"y_start"},
                                          is_fmu=True,
                                          is_exchange_model=True,
+                                         use_fmi_init_params=True,
                                          is_initial_exchange_model=True)
 
     params_filt2 = DymolaModelParameters(fmu_path=os.path.join(package_path, "FMUOutput", f"Butterworth.fmu"),
                                          model_name=f"Butterworth_fmu",
                                          is_fmu=True,
+                                         use_fmi_init_params=True,
                                          parameters={"y_start":"y_start"},
                                          is_exchange_model=True)
     dymola_models = [params_filt1, params_filt2]

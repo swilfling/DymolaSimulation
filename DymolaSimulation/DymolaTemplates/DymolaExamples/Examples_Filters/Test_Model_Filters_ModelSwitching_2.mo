@@ -1,5 +1,8 @@
 within DymolaExamples.Examples_Filters;
 model Test_Model_Filters_ModelSwitching_2
+  parameter Real fmi_NumberOfSteps = 100;
+  parameter Real fmi_StartTime=0;
+  parameter Real fmi_StopTime=10;
   Modelica.Blocks.Interaction.Show.RealValue Output_Model_Filters;
  Modelica.Blocks.Sources.Pulse InputSignal(
                                     startTime=0.1, period=2,  offset=0.1)
@@ -13,8 +16,8 @@ model Test_Model_Filters_ModelSwitching_2
     annotation (Placement(transformation(extent={{62,44},{82,64}})));
   Modelica.Blocks.Sources.IntegerConstant selector(k=1)
     annotation (Placement(transformation(extent={{-64,-56},{-44,-36}})));
-    Chebyshev_fmu UUT;
-    Butterworth_fmu UUT2;
+    Chebyshev_fmu UUT(fmi_StartTime=fmi_StartTime, fmi_StopTime=fmi_StopTime);
+    Butterworth_fmu UUT2(fmi_StartTime=fmi_StartTime, fmi_StopTime=fmi_StopTime);
 equation
    connect(UUT2.u1, InputSignal.y) annotation (Line(points={{-26.4,12},{-48,12},
           {-48,58},{-67,58}},color={0,0,127}));
