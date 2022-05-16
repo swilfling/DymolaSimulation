@@ -27,12 +27,14 @@ if __name__ == "__main__":
     init_variables = {"y_start": 0}
 
     initialization_parameters = InitializationParameters(use_init_values=True, init_variables=init_variables)
+    result_root_dir = os.path.join(package_path, "Filter_Example_ModelSwitching_Terminate")
+    os.makedirs(result_root_dir, exist_ok=True)
 
-    simulator = DymolaSimulator(workdir_path=package_path,
+    simulator = DymolaSimulator(workdir_path=result_root_dir,
                                 package_paths_full=[os.path.join(package_path,"package.mo")],
                                 package_name=package_name,
                                 model_name=model_name,
-                                result_root_dir=package_path,
+                                result_root_dir=result_root_dir,
                                 sim_params=simulation_parameters,
                                 initialization_parameters=initialization_parameters,
                                 result_filename=output_file_name,
@@ -52,7 +54,7 @@ if __name__ == "__main__":
                                            is_exchange_model=True) for model_type in fmu_names]
     # Add terminator
     dymola_models.append(DymolaModelParameters(model_name="TestbenchComponents.ThresholdTerminator",
-        package_paths=["../../DymolaTemplates/TestbenchComponents/"]))
+        package_paths=["../../DymolaTemplates/TestbenchComponents/package.mo"]))
     # Set first model as initial
     dymola_models[0].set_as_exchg_init_model()
 

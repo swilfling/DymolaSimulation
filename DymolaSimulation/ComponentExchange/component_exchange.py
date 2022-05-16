@@ -4,6 +4,7 @@ from DymolaSimulation.Simulation import ModelicaSimulator
 from typing import List
 import os
 
+
 class ComponentExchange:
     """
     Implementation of component exchange.
@@ -49,7 +50,7 @@ class ComponentExchange:
         start_variables = {}
         current_model, new_model = self._get_initial_exchg_models()
         for sim_params in list_sim_params:
-            if current_model.is_fmu:
+            if current_model.use_fmi_init_params:
                 start_variables.update(exchg_utils.create_FMI_init_variables(sim_params))
             self.simulator.set_sim_params(sim_params)
             expected_stop_time = sim_params.stop_time
@@ -67,7 +68,7 @@ class ComponentExchange:
                 # Init parameters
                 start_variables.update(exchg_utils.get_start_vals(simulation_results, init_mapping))
                 self.simulator.set_start_time(terminate_time + self.time_delta)
-                if current_model.is_fmu:
+                if current_model.use_fmi_init_params:
                     start_variables.update(exchg_utils.create_FMI_init_variables(self.simulator.sim_params))
                 self.simulator.set_init_params_full(f"{self.simulator.result_filename}_{exp_cnt}", start_variables)
                 # Store simulation results

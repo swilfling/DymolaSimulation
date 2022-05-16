@@ -25,12 +25,14 @@ if __name__ == "__main__":
 
     # Optional: Dymola Path
     dymolapath = os.environ.get("DYMOLAPATH")
+    result_root_dir = os.path.join(package_path, "Filter_Example_ModelSwitching2")
+    os.makedirs(result_root_dir, exist_ok=True)
 
-    simulator = DymolaSimulator(workdir_path=package_path,
+    simulator = DymolaSimulator(workdir_path=result_root_dir,
                                 package_paths_full=[os.path.join(package_path,"package.mo")],
                                 package_name=package_name,
                                 model_name=model_name,
-                                result_root_dir=package_path,
+                                result_root_dir=result_root_dir,
                                 sim_params=simulation_parameters,
                                 initialization_parameters=InitializationParameters(),
                                 result_filename=output_file_name,

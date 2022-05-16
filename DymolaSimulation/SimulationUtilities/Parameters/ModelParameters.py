@@ -14,6 +14,7 @@ class DymolaModelParameters(Parameters):
     is_exchange_model: bool = False
     is_initial_exchange_model: bool = False
     package_paths: List[str] = None # List of all package paths
+    use_fmi_init_params: bool = False
 
     def get_input_names(self):
         return list(self.inputs.keys()) if self.inputs else []
