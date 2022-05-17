@@ -54,7 +54,7 @@ class DymolaSimulator(DymolaSimulatorNative):
         self.execute_commands(setup_commands, f"setup_script_{exp_name}.mos")
 
     def run_experiment(self, exp_name="", trajectory_names=[], start_time=None, stop_time=None,
-                       plot_enabled=True, store_csv=True, **kwargs):
+                       plot_enabled=False, store_csv=True, **kwargs):
         """
         Run experiment - main function. Uses MOS scripts.
         @param exp_name: Experiment name - optional

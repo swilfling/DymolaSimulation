@@ -125,7 +125,7 @@ class ModelicaSimulator:
         for val, result in zip(sweep_vals, sweep_results):
             self.plot_simulation_results(result, out_file_name=f'{out_file_name}_{sweep_var}_{val}'.replace(".", "_"))
 
-    def run_experiment(self, exp_name="",trajectory_names=[], start_time=None, stop_time=None, plot_enabled=True,
+    def run_experiment(self, exp_name="",trajectory_names=[], start_time=None, stop_time=None, plot_enabled=False,
                        **kwargs):
         """
         Run experiment - main function
@@ -140,7 +140,7 @@ class ModelicaSimulator:
         self._init_experiment(exp_name, **kwargs)
         simulation_results = self.run_simulation(trajectory_names=trajectory_names, out_file_name=out_file_name, **kwargs)
         if plot_enabled:
-            self.plot_simulation_results(simulation_results, out_file_name=out_file_name)
+            self.plot_simulation_results(simulation_results, out_file_name=out_file_name, show_legend=True, show_ylabel=True)
 
         return simulation_results
 
@@ -161,24 +161,22 @@ class ModelicaSimulator:
     ######################################### Simulation Parameters ####################################################
 
     def set_start_time(self, start_time=None):
-        if start_time is not None:
-            self.sim_params.start_time = start_time
+        self.sim_params.set_start_time(start_time)
 
     def set_stop_time(self, stop_time=None):
-        if stop_time is not None:
-            self.sim_params.stop_time = stop_time
+        self.sim_params.set_stop_time(stop_time)
 
     def get_start_time(self):
-        return self.sim_params.start_time
+        return self.sim_params.get_start_time()
 
     def get_stop_time(self):
-        return self.sim_params.stop_time
+        return self.sim_params.get_stop_time()
 
     def set_sim_params(self, sim_params: SimulationParameters):
         self.sim_params = sim_params
 
     def get_output_interval(self):
-        return self.sim_params.output_interval
+        return self.sim_params.get_output_interval()
 
     ######################### Private methods ##################################################
 
@@ -210,33 +208,21 @@ class ModelicaSimulator:
 
     def set_init_params_full(self, init_file: str, init_variables: dict):
         """
-        Set initialization parameters.
+        Set initialization parameters. Also activates initialization.
         @param init_file: Path to initialization file (.mat)
         @param init_variables: Dictionary of initialization values
         """
         self.init_params.set_initialization_parameters_full(init_file, init_variables)
 
     def set_init_variables(self, init_variables: dict):
-        """
-        @param init_variables: Dictionary of initialization values
-        """
-        self.init_params.init_variables = init_variables
+        self.init_params.set_init_variables(init_variables)
 
     def use_init_file(self, use_init_file=True):
-        """
-        @param use_init_file: Use init file or not
-        """
-        self.init_params.use_init_file = use_init_file
+        self.init_params.set_use_init_file(use_init_file)
 
     def use_init_vals(self, use_init_vals=True):
-        """
-        @param use_init_vals: use init vals or not
-        """
-        self.init_params.use_init_values = use_init_vals
+        self.init_params.set_use_init_values(use_init_vals)
 
     def set_init_file(self, init_file: str):
-        """
-        @param init_file: Initialization filename
-        """
-        self.init_params.init_filename = init_file
+        self.init_params.set_init_filename(init_file)
 

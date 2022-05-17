@@ -88,9 +88,8 @@ def plot_df(ax: plt.Axes, simulation_results: pd.DataFrame, **kwargs):
     xdate_format: use xdate format
     """
     if simulation_results is not None:
-        if kwargs.pop('show_legend',False):
-            ax.legend(simulation_results.columns)
-        if kwargs.pop('show_ylabel', False):
+        show_legend = kwargs.pop('show_legend', True)
+        if kwargs.pop('show_ylabel', True):
             ax.set_ylabel(label_list_to_str(list(simulation_results.columns)))
         cycler = kwargs.pop('cycler',None)
         if kwargs.pop('set_colors', False):
@@ -103,6 +102,8 @@ def plot_df(ax: plt.Axes, simulation_results: pd.DataFrame, **kwargs):
             ax.set_xlabel("Time [Days]")
         else:
             ax.plot(simulation_results, **kwargs)
+        if show_legend:
+            ax.legend(simulation_results.columns)
 
 
 def save_figure(plot_path, output_file_name, format="png",store_tikz=True):
