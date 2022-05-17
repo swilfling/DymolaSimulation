@@ -8,9 +8,7 @@ model Test_Model_Filters_ModelSwitching
     startTime=0.1,
     period=2,
     offset=0.1);
-      Chebyshev_fmu UUT( y_start=y_start,
-    fmi_NumberOfSteps=fmi_NumberOfSteps,
-    fmi_StartTime=fmi_StartTime, fmi_StopTime=fmi_StopTime)    annotation (Placement(transformation(extent={{-166,-44},{-146,-24}})));
+      Chebyshev UUT( y_start=y_start)    annotation (Placement(transformation(extent={{-166,-44},{-146,-24}})));
 equation
 
   connect(InputSignal.y, UUT.u1);

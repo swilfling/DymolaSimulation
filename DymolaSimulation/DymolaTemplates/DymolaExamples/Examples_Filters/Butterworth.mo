@@ -8,7 +8,7 @@ model Butterworth
     order=2,
     f_cut=1,
     f_min=0.8*1,
-    x_start={y_start,0})
+    x_start={0,y_start})
     annotation (Placement(transformation(extent={{-34,2},{-14,22}})));
   Modelica.Blocks.Interfaces.RealInput u1
               "Connector of Real input signal"
