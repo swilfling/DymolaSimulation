@@ -49,7 +49,11 @@ if __name__ == "__main__":
     # Create model definitions
     dymola_models = [DymolaModelParameters(fmu_path=os.path.join(package_path,"FMUOutput", f"{model_type}.fmu"),
                                            model_name=f"{model_type}_fmu",
-                                           parameters={"y_start": "y_start"},
+                                           parameters={"y_start": "y_start",
+                                                     "fmi_StartTime":"fmi_StartTime",
+                                                     "fmi_StopTime":"fmi_StopTime",
+                                                     "fmi_NumberOfSteps":"fmi_NumberOfSteps",
+                                                     "fmi_forceShutDownAtStopTime":"true"},
                                            is_fmu=True,
                                            use_fmi_init_params=True,
                                            is_exchange_model=True) for model_type in fmu_names]
