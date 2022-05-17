@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     # Parameter Definitions
     package_name = "DymolaExamples.Examples_Filters"
-    model_name = "Test_Model_Filters_ModelSwitching"
+    model_name = "Test_Model_Filters_ModelSwitching_fmu"
     output_file_name = "result_filters"
 
     # ################ Simulation ############################################################
@@ -24,10 +24,10 @@ if __name__ == "__main__":
     dymolapath = os.environ.get("DYMOLAPATH")
 
     # Settings: Extract end values to set start values
-    init_variables = {"y_start":0}
+    init_variables = {"x_start[0]":0}
 
     initialization_parameters = InitializationParameters(use_init_values=True, init_variables=init_variables)
-    result_root_dir = os.path.join(package_path, "Filter_Example_ModelSwitching")
+    result_root_dir = os.path.join(package_path, "Filter_Example_ModelSwitching_fmu")
     os.makedirs(result_root_dir, exist_ok=True)
 
     simulator = DymolaSimulator(workdir_path=result_root_dir,
@@ -46,13 +46,19 @@ if __name__ == "__main__":
 
     init_mapping = {"y_start": "UUT.y1"}
 
-    params_filt1 = DymolaModelParameters(model_name=f"Chebyshev",
-                                         is_exchange_model=True,
+    params_filt1 = DymolaModelParameters(fmu_path=os.path.join(package_path, "FMUOutput", f"Chebyshev.fmu"),
+                                         model_name=f"Chebyshev_fmu",
                                          parameters={"y_start":"y_start"},
+                                         is_fmu=True,
+                                         is_exchange_model=True,
+                                         use_fmi_init_params=True,
                                          is_initial_exchange_model=True)
 
-    params_filt2 = DymolaModelParameters(model_name=f"Butterworth",
-                                         parameters={"y_start": "y_start"},
+    params_filt2 = DymolaModelParameters(fmu_path=os.path.join(package_path, "FMUOutput", f"Butterworth.fmu"),
+                                         model_name=f"Butterworth_fmu",
+                                         is_fmu=True,
+                                         use_fmi_init_params=True,
+                                         parameters={"y_start":"y_start"},
                                          is_exchange_model=True)
     dymola_models = [params_filt1, params_filt2]
 

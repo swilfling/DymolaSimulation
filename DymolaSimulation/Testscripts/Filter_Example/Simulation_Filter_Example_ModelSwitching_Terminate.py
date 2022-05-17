@@ -11,7 +11,7 @@ if __name__ == "__main__":
     simulation_parameters = SimulationParameters(algorithm="Dassl",
                                                  start_time=0,
                                                  stop_time=2,
-                                                 output_interval=0.1)
+                                                 num_intervals=200)
 
     # Parameter Definitions
     package_name = "DymolaExamples.Examples_Filters"

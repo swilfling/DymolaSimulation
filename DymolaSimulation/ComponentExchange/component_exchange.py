@@ -51,7 +51,9 @@ class ComponentExchange:
         current_model, new_model = self._get_initial_exchg_models()
         for sim_params in list_sim_params:
             if current_model.use_fmi_init_params:
+                self.simulator.use_init_vals()
                 start_variables.update(exchg_utils.create_FMI_init_variables(sim_params))
+                self.simulator.set_init_variables(start_variables)
             self.simulator.set_sim_params(sim_params)
             expected_stop_time = sim_params.stop_time
             terminate_time = sim_params.start_time
@@ -100,6 +102,7 @@ class ComponentExchange:
         paths = []
         for model in self.models:
             if model.package_paths is not None:
-                paths.append(*model.package_paths)
+                for path in model.package_paths:
+                    paths.append(path)
         paths = list(set(paths))
         return [os.path.abspath(path) for path in paths]

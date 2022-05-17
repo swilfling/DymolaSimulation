@@ -10,7 +10,7 @@ if __name__ == "__main__":
                                                  start_time=0,
                                                  # stop_time=2.8854e+07,
                                                  stop_time=100,
-                                                 output_interval=0.01)
+                                                 num_intervals=200)
 
     # Parameter Definitions
     package_name = "DymolaExamples.Examples_Filters"
