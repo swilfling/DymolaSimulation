@@ -8,7 +8,7 @@ model Test_Model_Filters_ModelSwitching_fmu
     startTime=0.1,
     period=2,
     offset=0.1);
-      Chebyshev_fmu UUT(y_start=y_start,fmi_NumberOfSteps=fmi_NumberOfSteps, fmi_StartTime=fmi_StartTime,fmi_StopTime=fmiStopTime);
+      Chebyshev_fmu UUT(y_start=y_start,fmi_NumberOfSteps=fmi_NumberOfSteps, fmi_StartTime=fmi_StartTime,fmi_StopTime=fmi_StopTime, fmi_forceShutDownAtStopTime=true);
 equation
   connect(InputSignal.y, UUT.u1);
 end Test_Model_Filters_ModelSwitching_fmu;

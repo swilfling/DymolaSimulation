@@ -24,7 +24,7 @@ if __name__ == "__main__":
     dymolapath = os.environ.get("DYMOLAPATH")
 
     # Settings: Extract end values to set start values
-    init_variables = {"x_start[0]":0}
+    init_variables = {"y_start":0}
 
     initialization_parameters = InitializationParameters(use_init_values=True, init_variables=init_variables)
     result_root_dir = os.path.join(package_path, "Filter_Example_ModelSwitching_fmu")
@@ -48,7 +48,11 @@ if __name__ == "__main__":
 
     params_filt1 = DymolaModelParameters(fmu_path=os.path.join(package_path, "FMUOutput", f"Chebyshev.fmu"),
                                          model_name=f"Chebyshev_fmu",
-                                         parameters={"y_start":"y_start"},
+                                         parameters={"y_start":"y_start",
+                                                     "fmi_StartTime":"fmi_StartTime",
+                                                     "fmi_StopTime":"fmi_StopTime",
+                                                     "fmi_NumberOfSteps":"fmi_NumberOfSteps",
+                                                     "fmi_forceShutDownAtStopTime":"true"},
                                          is_fmu=True,
                                          is_exchange_model=True,
                                          use_fmi_init_params=True,
@@ -58,7 +62,12 @@ if __name__ == "__main__":
                                          model_name=f"Butterworth_fmu",
                                          is_fmu=True,
                                          use_fmi_init_params=True,
-                                         parameters={"y_start":"y_start"},
+                                         parameters={"y_start":"y_start",
+                                                     "fmi_StartTime": "fmi_StartTime",
+                                                     "fmi_StopTime": "fmi_StopTime",
+                                                     "fmi_NumberOfSteps": "fmi_NumberOfSteps",
+                                                     "fmi_forceShutDownAtStopTime": "true"
+                                                     },
                                          is_exchange_model=True)
     dymola_models = [params_filt1, params_filt2]
 
