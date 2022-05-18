@@ -66,7 +66,6 @@ class DymolaSimulator(DymolaSimulatorNative):
                                       plot_enabled=plot_enabled, store_csv=store_csv,
                                       script_name=f"simulation_script_{exp_name}.mos", **kwargs)
 
-
     def execute_commands(self, commands, script_name=""):
         """
         Execute Dymola commands in MOS script.
