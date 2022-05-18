@@ -31,7 +31,7 @@ class SimulationParameters(Parameters):
         return self.output_interval
 
     @staticmethod
-    def create_simulation_parameters(num_experiments,start_time, start_duration=0, experiment_duration=0, timestep=900):
+    def create_params(num_experiments, start_time, start_duration=0, experiment_duration=0, timestep=900):
         simulation_parameters_list = [SimulationParameters(start_time=start_time, stop_time=start_time + start_duration,
                                                            num_intervals=int(start_duration / timestep), output_interval=timestep)]
         for i in range(num_experiments):

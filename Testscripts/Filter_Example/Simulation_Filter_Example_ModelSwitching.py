@@ -56,7 +56,7 @@ if __name__ == "__main__":
                                          is_exchange_model=True)
     dymola_models = [params_filt1, params_filt2]
 
-    simulation_parameters_list = SimulationParameters.create_simulation_parameters(num_experiments=2,start_time=0,start_duration=10, experiment_duration=10,timestep=0.05)
+    simulation_parameters_list = SimulationParameters.create_params(num_experiments=2, start_time=0, start_duration=10, experiment_duration=10, timestep=0.05)
     exchg = ComponentExchange(simulator, dymola_models)
     list_simulation_results = exchg.run_exchange(simulation_parameters_list, plotting_variables, init_mapping)
     simulator.plot_multiple_results(list_simulation_results, set_colormap=True, colors='Set1')
