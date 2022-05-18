@@ -1,6 +1,6 @@
 import os
-from DymolaSimulation.Simulation.DymolaSimulatorNative import DymolaSimulatorNative
-import DymolaSimulation.Simulation.DymolaCommands as DymolaCommands
+from .DymolaSimulatorNative import DymolaSimulatorNative
+from .. SimulationUtilities import DymolaCommands
 
 
 class DymolaSimulator(DymolaSimulatorNative):
@@ -134,12 +134,12 @@ class DymolaSimulator(DymolaSimulatorNative):
         if export_equations_enabled:
             self._export_equations(out_file_name)
         cmds = DymolaCommands.create_sim_cmds_extended(simulation_parameters=self.sim_params,
-                                                           workdir_path=self.workdir_path,
-                                                           model_name_full=self.model_name_full(),
-                                                           resultfile_path_full=os.path.join(self.get_data_dir(), out_file_name),
-                                                           use_init=self.init_params.use_init_values,
-                                                           init_variables=self.init_params.init_variables,
-                                                           additional_parameters=additional_params)
+                                                       workdir_path=self.workdir_path,
+                                                       model_name_full=self.model_name_full(),
+                                                       resultfile_path_full=os.path.join(self.get_data_dir(), out_file_name),
+                                                       use_init=self.init_params.use_init_values,
+                                                       init_variables=self.init_params.init_variables,
+                                                       additional_parameters=additional_params)
         self.execute_commands(cmds, script_name)
 
     ############################### Commands ##########################################################################

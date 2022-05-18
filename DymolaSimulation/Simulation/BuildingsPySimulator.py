@@ -1,7 +1,7 @@
 import os
 
-import DymolaSimulation.SimulationUtilities.simulation_utils as simutils
-from DymolaSimulation.Simulation import ModelicaSimulator
+from ..SimulationUtilities import simulation_utils as simutils
+from . import ModelicaSimulator
 from buildingspy.simulate.Simulator import Simulator
 from buildingspy.io.outputfile import Reader
 

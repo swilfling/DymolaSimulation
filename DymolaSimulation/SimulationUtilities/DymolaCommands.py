@@ -5,7 +5,7 @@ Created on Wed Jun  2 11:54:39 2021
 @author: Basak
 """
 import os
-from DymolaSimulation.SimulationUtilities.Parameters import DymolaModelParameters
+from .Parameters import DymolaModelParameters
 
 
 # Create initial condition loading script

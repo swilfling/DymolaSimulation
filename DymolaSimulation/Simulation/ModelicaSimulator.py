@@ -1,7 +1,7 @@
 import os
 
-import DymolaSimulation.SimulationUtilities.simulation_utils as simutils
-from DymolaSimulation.SimulationUtilities.Parameters import SimulationParameters, SimulatorDirs, InitializationParameters
+from ..SimulationUtilities import simulation_utils as simutils
+from ..SimulationUtilities.Parameters import SimulationParameters, SimulatorDirs, InitializationParameters
 
 
 class ModelicaSimulator:

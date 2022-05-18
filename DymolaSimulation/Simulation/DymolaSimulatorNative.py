@@ -1,7 +1,7 @@
 import os
 
-import DymolaSimulation.SimulationUtilities.simulation_utils as simutils
-from DymolaSimulation.Simulation.ModelicaSimulator import ModelicaSimulator
+from ..SimulationUtilities import simulation_utils as simutils
+from .ModelicaSimulator import ModelicaSimulator
 
 
 class DymolaSimulatorNative(ModelicaSimulator):

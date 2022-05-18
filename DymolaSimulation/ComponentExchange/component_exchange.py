@@ -1,6 +1,6 @@
-import DymolaSimulation.ComponentExchange.exchg_utils as exchg_utils
-from DymolaSimulation.SimulationUtilities.Parameters import SimulationParameters, DymolaModelParameters
-from DymolaSimulation.Simulation import ModelicaSimulator
+from . import exchg_utils
+from ..SimulationUtilities.Parameters import SimulationParameters, DymolaModelParameters
+from ..Simulation import ModelicaSimulator
 from typing import List
 import os
 
