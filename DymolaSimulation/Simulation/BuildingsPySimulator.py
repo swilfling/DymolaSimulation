@@ -54,7 +54,6 @@ class BuildingsPySimulator(ModelicaSimulator):
         simulation_results = simutils.create_df(trajectories, trajectory_names)
         return simulation_results
 
-
     def _simulate_model(self, additional_params=None, **kwargs):
         """
          Simulate model
