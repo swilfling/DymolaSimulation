@@ -1,0 +1,3 @@
+[submodule "DymolaSimulation/Simulation"]
+	path = DymolaSimulation/Simulation
+	url = https://github.com/tug-cps/dymola-simulator
