@@ -1,6 +1,6 @@
 import os
-from DymolaSimulation.SimulationUtilities.Parameters import SimulationParameters
-from DymolaSimulation.Simulation import DymolaSimulator
+from DymolaSimulation.DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters
+from DymolaSimulation.DymolaSimulation.Simulation.Simulator import DymolaSimulator
 
 if __name__ == "__main__":
     package_path = os.path.abspath("../../DymolaTemplates/DymolaExamples")
@@ -39,13 +39,17 @@ if __name__ == "__main__":
     # Create commands and simulate
     simulator.setup_experiment(exp_name="1")
     # Adapt parameters
-    simulator.run_experiment(exp_name="1", trajectory_names=plotting_variables, start_time=0, stop_time=2)
+    simulator.run_experiment(exp_name="1", trajectory_names=plotting_variables, start_time=0, stop_time=2,
+                             plot_enabled=True)
     simulator.use_init_file()
     simulator.set_init_file("result_filters_1")
-    simulator.run_experiment(start_time=2, stop_time=4, exp_name="2", trajectory_names=plotting_variables)
+    simulator.run_experiment(start_time=2, stop_time=4, exp_name="2", trajectory_names=plotting_variables,
+                             plot_enabled=True)
     simulator.set_init_file("result_filters_2")
-    simulator.run_experiment(start_time=4, stop_time=6, exp_name="3", trajectory_names=plotting_variables)
+    simulator.run_experiment(start_time=4, stop_time=6, exp_name="3", trajectory_names=plotting_variables,
+                             plot_enabled=True)
     # Comparison: Full experiment
     simulator.use_init_file(False)
-    simulator.run_experiment(start_time=0, stop_time=6, exp_name="Full", trajectory_names=plotting_variables)
+    simulator.run_experiment(start_time=0, stop_time=6, exp_name="Full", trajectory_names=plotting_variables,
+                             plot_enabled=True)
     simulator.terminate()

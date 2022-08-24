@@ -1,4 +1,4 @@
-from ..SimulationUtilities import DymolaCommands
+from ..Simulation.SimulationUtilities import DymolaCommands
 
 
 def get_df_end_values(df, labels):
