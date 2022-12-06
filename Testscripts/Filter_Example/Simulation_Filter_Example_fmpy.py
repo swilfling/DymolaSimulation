@@ -40,7 +40,7 @@ if __name__ == "__main__":
                               sim_params=simulation_parameters,
                               initialization_parameters=initialization_parameters,
                               input_data=input_data,
-                              result_root_dir="../DymolaPythonInterface/FMPY/")
+                              result_root_dir="./")
 
     simulation_results = simulator.run_experiment("Exp1", trajectory_names=output_feature_names, plot_enabled=True, store_csv=True)
 
