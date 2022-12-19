@@ -1,6 +1,6 @@
 import os
-from DymolaSimulation.DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters
-from DymolaSimulation.DymolaSimulation.Simulation.Simulator import DymolaSimulator
+from DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters
+from DymolaSimulation.Simulation.Simulator import DymolaSimulator
 
 if __name__ == "__main__":
     # Set package path - adapt this if necessary

@@ -3,11 +3,9 @@ import numpy as np
 import numpy.lib.recfunctions as rfs
 from DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters, InitializationParameters
 from DymolaSimulation.Simulation.Simulator.fmpySimulator import FMPYSimulator
-import os
 
 
 if __name__ == "__main__":
-    hybridcosim_path = os.environ.get('HYBRIDCOSIM_REPO_PATH')
     data_filename = "../../DymolaTemplates/DymolaExamples/example_data.csv"
 
     # Get FMU interface
@@ -22,7 +20,7 @@ if __name__ == "__main__":
 
     start_time = 0
     output_interval = 1
-    num_intervals = 11
+    num_intervals = 21
     stop_time = start_time + num_intervals * output_interval
     input_data = input_data[:stop_time+1]
 

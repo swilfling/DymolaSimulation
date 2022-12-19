@@ -1,7 +1,7 @@
 import os
-from DymolaSimulation.DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters, InitializationParameters, DymolaModelParameters
-from DymolaSimulation.DymolaSimulation.Simulation.Simulator import DymolaSimulator
-from DymolaSimulation.DymolaSimulation.ComponentExchange.component_exchange import ComponentExchange
+from DymolaSimulation.Simulation.SimulationUtilities.Parameters import SimulationParameters, InitializationParameters, DymolaModelParameters
+from DymolaSimulation.Simulation.Simulator import DymolaSimulator
+from DymolaSimulation.ComponentExchange.component_exchange import ComponentExchange
 
 
 if __name__ == "__main__":
